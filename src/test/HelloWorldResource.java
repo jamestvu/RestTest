@@ -16,8 +16,11 @@ public class HelloWorldResource {
     @GET
     @Path("testMessage")
     @Produces(MediaType.APPLICATION_JSON)
-    public TestObject getTestMessage() {
+    public TestObject getTestMessage() throws TestException {
     	TestObject to = new TestObject(1, "james");
+    	if (to != null) {
+    		throw new TestException("ggg2");
+    	}
     	return to;
     }
 }
