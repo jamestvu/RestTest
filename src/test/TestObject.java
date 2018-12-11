@@ -1,5 +1,8 @@
 package test;
 
+import lombok.Data;
+
+@Data
 public class TestObject {
 	
 	private int id;

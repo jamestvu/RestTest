@@ -14,16 +14,26 @@ public class HelloWorldResource {
     public String sayHello() {
         return "Hello World";
     }
+
+    @GET
+    @Path("message")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getTestMessage() throws WebApplicationException {
+        return "Test message xd";
+    }
     
     @GET
-    @Path("testMessage")
+    @Path("object")
     @Produces(MediaType.APPLICATION_JSON)
-    public TestObject getTestMessage() throws WebApplicationException {
+    public TestObject getTestObjet() throws WebApplicationException {
     	TestObject to = new TestObject(1, "james");
-    	if (to != null) {
-    		TestObject test = new TestObject(33, "gorilla");
-    		throw new WebApplicationException(Response.status(Response.Status.NOT_ACCEPTABLE).entity(test).build());
-    	}
     	return to;
+    }
+
+    @GET
+    @Path("exception")
+    @Produces(MediaType.APPLICATION_JSON)
+    public TestObject getTestException() throws WebApplicationException {
+    		throw new WebApplicationException(Response.status(Response.Status.NOT_ACCEPTABLE).entity(null).build());
     }
 }
